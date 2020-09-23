@@ -24,5 +24,9 @@ public class Identite {
 		return prenom;
 	}
 	
-	
+	public Identite(String nip,String n,String p) {
+		NIP=nip;
+		nom=n;
+		prenom=p;
+	}
 }
