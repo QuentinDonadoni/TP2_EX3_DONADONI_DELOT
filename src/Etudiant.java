@@ -58,15 +58,18 @@ public class Etudiant extends HashMap<String,ArrayList<Double>>{
 			int compteur=0;
 			Double toMat=0.0;
 			String matiere=it.next();
-			ArrayList<Double> list=résultat.get(it.next());
+			ArrayList<Double> list=résultat.get(matiere);
 			for(int j=0;j<list.size();j++) {
 				compteur++;
 				toMat+=list.get(j);
 			}
 			toMat=toMat/compteur;
-			total+=résultat*formation.getCoef(matiere);
+			total+=toMat*formation.coeff(matiere);
+			toCoef+=formation.coeff(matiere);
+			it.next();
 		}
-		return null;
+		total=total/toCoef;
+		return total;
 	}
 
 }

@@ -33,6 +33,10 @@ public class Formation {
 	}
 	
 	public boolean isMat(String mat) {
-		return true;
+		return listMat.containsKey(mat);
+	}
+	
+	public HashMap<String,Double> getListeMat(){
+		return listMat;
 	}
 }
