@@ -16,4 +16,8 @@ public class Etudiant extends HashMap<String,ArrayList<Double>>{
 		identite=i;
 		//formation=f;
 	}
+	
+	public void calculMoy(){
+		
+	}
 }
