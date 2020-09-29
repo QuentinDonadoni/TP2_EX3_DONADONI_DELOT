@@ -23,11 +23,8 @@ public class Formation {
 	
 	public Double coeff(String mat) {
 		Double c = null;
-		HashMap<String,Double> map = new HashMap<String,Double>();
-		for (Entry<String, Double> entry : map.entrySet()) {
-            String key = entry.getKey();
-            Double value = entry.getValue();
-            c = value;
+		if(listMat.containsKey(mat)) {
+			c=listMat.get(mat);
 		}
 		return c;
 	}
