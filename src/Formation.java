@@ -4,27 +4,32 @@ import java.util.Map.Entry;
 public class Formation {
 
 	private String identifiant;
-	private HashMap<String,Double> listMat;
+	private HashMap<String,Double> listMat=new HashMap<String,Double>();
 	
 	public Formation(String id, HashMap<String,Double> list) {
 		identifiant = id;
 		listMat = list;
 	}
 	
-	public void addMat(String mat, Double coef) {
-		HashMap<String,Double> map = new HashMap<String,Double>();
-		map.put(mat,coef);
+	public void addMat(String mat, Double coef) throws Exception {
+		if(coef>=0) {
+		listMat.put(mat,coef);
+		}else {
+			throw new Exception("coef negatif");
+		}
 	}
 	
-	public void supMat(HashMap<String,Double> Mat) {
-		HashMap<String,Double> map = new HashMap<String,Double>();
-		map.remove(Mat);
+	public void supMat(String mat) {
+		if(listMat.containsKey(mat))
+		listMat.remove(mat);
 	}
 	
-	public Double coeff(String mat) {
+	public Double coeff(String mat) throws Exception {
 		Double c = null;
 		if(listMat.containsKey(mat)) {
 			c=listMat.get(mat);
+		}else {
+			throw new Exception("la matière n'est pas dans la formation");
 		}
 		return c;
 	}
