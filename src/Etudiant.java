@@ -8,7 +8,6 @@ public class Etudiant extends HashMap<String,ArrayList<Double>>{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private Identite identite;
 	private Formation formation;
 	private HashMap<String,ArrayList<Double>> résultat=new HashMap<String,ArrayList<Double>>();
@@ -108,4 +107,54 @@ public class Etudiant extends HashMap<String,ArrayList<Double>>{
 			throw new Exception("Il n'y a pas cette matière");
 		}
 	}
+	
+	public Formation getFormation() {
+		return formation;
+	}
+
+	/**
+	 * @return the identite
+	 */
+	public Identite getIdentite() {
+		return identite;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((formation == null) ? 0 : formation.hashCode());
+		result = prime * result + ((identite == null) ? 0 : identite.hashCode());
+		result = prime * result + ((résultat == null) ? 0 : résultat.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Etudiant other = (Etudiant) obj;
+		if (formation == null) {
+			if (other.formation != null)
+				return false;
+		} else if (!formation.equals(other.formation))
+			return false;
+		if (identite == null) {
+			if (other.identite != null)
+				return false;
+		} else if (!identite.equals(other.identite))
+			return false;
+		if (résultat == null) {
+			if (other.résultat != null)
+				return false;
+		} else if (!résultat.equals(other.résultat))
+			return false;
+		return true;
+	}
+	
+	
 }

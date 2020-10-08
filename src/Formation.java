@@ -6,9 +6,8 @@ public class Formation {
 	private String identifiant;
 	private HashMap<String,Double> listMat=new HashMap<String,Double>();
 	
-	public Formation(String id, HashMap<String,Double> list) {
+	public Formation(String id) {
 		identifiant = id;
-		listMat = list;
 	}
 	
 	public void addMat(String mat, Double coef) throws Exception {
@@ -41,4 +40,40 @@ public class Formation {
 	public HashMap<String,Double> getListeMat(){
 		return listMat;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((identifiant == null) ? 0 : identifiant.hashCode());
+		result = prime * result + ((listMat == null) ? 0 : listMat.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Formation other = (Formation) obj;
+		if (identifiant == null) {
+			if (other.identifiant != null)
+				return false;
+		} else if (!identifiant.equals(other.identifiant))
+			return false;
+		if (listMat == null) {
+			if (other.listMat != null)
+				return false;
+		} else if (!listMat.equals(other.listMat))
+			return false;
+		return true;
+	}
+
+	
+
+
+	
 }

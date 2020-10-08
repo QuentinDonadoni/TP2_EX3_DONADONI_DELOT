@@ -11,7 +11,7 @@ public class testEtudiant {
 	Formation f;
 	@Before
 	public void initialiseEtudiant() throws Exception {
-		f=new Formation("1",new HashMap<String,Double>());
+		f=new Formation("1");
 		f.addMat("math", 1.0);
 		f.addMat("info", 2.0);
 		f.addMat("test", 2.0);

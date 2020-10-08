@@ -11,8 +11,7 @@ public class testFormation {
 	Formation f;
 	@Before
 	public void initialiseFormation() {
-		HashMap<String,Double> h=new HashMap<String,Double>();
-		f= new Formation("01",h);
+		f= new Formation("01");
 	}
 	
 	
