@@ -156,5 +156,22 @@ public class Etudiant extends HashMap<String,ArrayList<Double>>{
 		return true;
 	}
 	
+	public int compareToAlpha (Object o) {
+        if (!this.identite.getNom().equals(((Etudiant) o).identite.getNom())) {
+        	return this.identite.getNom().compareTo(((Etudiant) o).identite.getNom());
+        } else {
+        	return this.identite.getPrenom().compareTo(((Etudiant) o).identite.getPrenom());
+        }
+    }
 	
+	
+	public int compareParMerite(Object o) throws Exception {
+		if(this.calculMoyGeneral()<((Etudiant)o).calculMoyGeneral()) {
+			return 1;
+		} else if (this.calculMoyGeneral()>=((Etudiant)o).calculMoyGeneral()) {
+			return -1;
+		}else {
+			return 0;
+		}
+	}
 }

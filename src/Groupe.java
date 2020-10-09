@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Groupe {
@@ -33,19 +35,28 @@ public class Groupe {
 
 	public Double calculerMoyenneMat(String mat) throws Exception {
 		Double moy=0.0;
-		if(listeEtu.isEmpty()) {
+		int sansNote=0;
+		if(!listeEtu.isEmpty()) {
 			for(int i=0;i<listeEtu.size();i++) {
+				try {
 				moy+=listeEtu.get(i).calculMoyMat(mat);
+				}catch (Exception e) {
+					sansNote++;
+				}
 			}
 		}else {
 			throw new Exception("Pas d'etudiant dans le groupe");
 		}
-		return moy/listeEtu.size();
+		if(sansNote==listeEtu.size()) {
+			return null;
+		}else {
+		return moy/(listeEtu.size()-sansNote);
+		}
 	}
 
 	public Double calculerMoyenneGene() throws Exception {
 		Double moy=0.0;
-		if(listeEtu.isEmpty()) {
+		if(!listeEtu.isEmpty()) {
 			for(int i=0;i<listeEtu.size();i++) {
 				moy+=listeEtu.get(i).calculMoyGeneral();
 			}
@@ -62,6 +73,25 @@ public class Groupe {
 		return listeEtu;
 	}
 
+	public void triAlpha() {
+		Collections.sort(listeEtu, new Comparator<Etudiant>() {
+			@Override
+			public int compare(Etudiant e1, Etudiant e2) {
+				return e1.compareToAlpha(e2);
+			}
+		});
+	}
 	
-	
+	public void triParMerite() {
+		Collections.sort(listeEtu, new Comparator<Etudiant>() {
+			@Override
+			public int compare(Etudiant e1, Etudiant e2) {
+				try {
+					return e1.compareParMerite(e2);
+				} catch (Exception e) {
+					return -2;
+		}
+	}
+});
+	}
 }
